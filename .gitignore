@@ -79,7 +79,11 @@ coverage/
 .env.*
 !.env.example
 *.publishsettings
+*.PublishSettings
 *.azurePubxml
+*.pubxml
+*.pubxml.user
+Properties/PublishProfiles/
 
 # ASP.NET Core User Secrets & Local overrides
 # (Keep appsettings.json and appsettings.Development.json)
