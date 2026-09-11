@@ -13,6 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     
+    <!-- pup logo favicon -->
+    <link rel="icon" type="image/png" href="~/pup-logo.png" />
+    <link rel="shortcut icon" type="image/png" href="~/pup-logo.png" />
+    
     <!-- fonts from google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -439,8 +443,14 @@
         </main>
 
         <!-- required footer info -->
-        <footer class="text-center mt-6 text-slate-500 text-xs md:text-sm font-semibold tracking-wide">
-            &copy; BSIT 4 – 2026
+        <footer class="text-center mt-6 text-slate-500 text-xs md:text-sm tracking-wide flex flex-col items-center gap-1.5">
+            <p class="font-medium text-slate-500">&copy; BSIT 4 – 2026</p>
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-100 via-amber-200/90 to-amber-100 border border-amber-300 text-pup-maroon font-extrabold text-xs shadow-sm tracking-wide">
+                <svg class="w-3.5 h-3.5 text-pup-maroon flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Christian Jay C. Mandani</span>
+            </div>
         </footer>
 
     </div>
