@@ -11,6 +11,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans for premium modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,230 +27,252 @@
                         pup: {
                             maroon: '#781214',
                             gold: '#F1B82D',
-                            blue: '#0056B3'
+                            blue: '#0d6efd',
+                            bluedark: '#0b5ed7',
+                            green: '#198754'
                         }
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif']
+                        sans: ['Plus Jakarta Sans', 'Segoe UI', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 45px -10px rgba(15, 23, 42, 0.12), 0 8px 20px -6px rgba(15, 23, 42, 0.08)'
                     }
                 }
             }
         }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
         }
-        /* Smooth micro-animations */
-        @@keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        /* Subtle smooth entrance animation */
+        @@keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .animate-fade-in {
-            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+        .animate-card-enter {
+            animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .animate-details-enter {
+            animation: slideUpFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-100 via-blue-50/40 to-slate-200/70 min-h-screen flex flex-col justify-between py-8 px-4 text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-gradient-to-br from-slate-100 via-blue-50/40 to-slate-200/60 min-h-screen py-10 px-4 text-slate-800 antialiased flex flex-col justify-between items-center selection:bg-blue-600 selection:text-white">
 
-    <!-- Decorative Top Accent Bar -->
+    <!-- Top Decorative Gradient Line -->
     <div class="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-pup-maroon z-50"></div>
 
-    <!-- Header Section -->
-    <header class="text-center pt-2 pb-2">
-        <div class="inline-flex items-center justify-center mb-2">
-            <img src="https://www.pngkey.com/png/detail/52-528919_the-pup-logo-polytechnic-university-of-the-philippines.png" 
-                 alt="The Pup Logo - Polytechnic University Of The Philippines Logo@pngkey.com"
-                 class="h-16 md:h-20 w-auto object-contain drop-shadow-sm" />
-        </div>
-        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-wider uppercase drop-shadow-sm">
-            PUP BATAAN
-        </h1>
-        <p class="text-xs md:text-sm font-medium text-slate-500 tracking-widest uppercase mt-1">
-            Polytechnic University of the Philippines
-        </p>
-    </header>
+    <!-- Main Content Container -->
+    <div class="w-full max-w-2xl mx-auto animate-card-enter">
 
-    <!-- Main Container -->
-    <main class="w-full flex-grow flex items-center justify-center">
-        <!-- Centered Card Container -->
-        <div class="w-full max-w-3xl mx-auto my-6 bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden ring-1 ring-slate-900/5 transition-all duration-300 hover:shadow-2xl">
+        <!-- Header: PUP BATAAN with official university styling -->
+        <header class="text-center mb-5">
+            <!-- University Seal Logo -->
+            <div class="inline-flex items-center justify-center mb-2.5">
+                <img src="https://www.pngkey.com/png/detail/52-528919_the-pup-logo-polytechnic-university-of-the-philippines.png" 
+                     alt="Polytechnic University of the Philippines Crest"
+                     onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Polytechnic_University_of_the_Philippines_Logo.svg/240px-Polytechnic_University_of_the_Philippines_Logo.svg.png'"
+                     class="h-16 md:h-20 w-auto object-contain drop-shadow" />
+            </div>
+
+            <!-- Header Title: PUP BATAAN -->
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-wider uppercase drop-shadow-sm">
+                PUP BATAAN
+            </h1>
+            <p class="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-widest mt-1">
+                Polytechnic University of the Philippines
+            </p>
+        </header>
+
+        <!-- Main Card Container -->
+        <main class="w-full bg-white rounded-2xl shadow-premium border border-slate-200/90 overflow-hidden transition-all duration-300">
             
-            <!-- Form Banner -->
-            <div class="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white font-bold text-center py-4 px-6 text-xl tracking-wider uppercase shadow-md flex items-center justify-center gap-2.5">
+            <!-- Expected Design Output: Blue Header Box -->
+            <div class="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white font-extrabold text-center py-4 px-6 text-xl md:text-2xl tracking-wider uppercase shadow-md flex items-center justify-center gap-2.5">
+                <!-- Registration Document Icon -->
                 <svg class="w-6 h-6 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
                 <span>STUDENT REGISTRATION</span>
             </div>
 
             <!-- Form Body -->
-            <form method="post" asp-page-handler="Submit" class="p-6 md:p-8 space-y-5" id="registrationForm">
+            <form method="post" asp-page-handler="Submit" class="p-6 md:p-8 space-y-4" id="registrationForm">
                 
-                <!-- Sub-header text -->
-                <div class="flex items-center gap-2 pb-1 border-b border-slate-100">
+                <!-- Instruction Subtext -->
+                <div class="flex items-center gap-2 pb-1 text-slate-500 border-b border-slate-100">
                     <svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
                     </svg>
-                    <p class="text-slate-500 text-sm font-medium">
+                    <p class="text-sm font-medium">
                         Please enter the student's information below.
                     </p>
                 </div>
 
-                <!-- First Name, Middle Initial, Last Name -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- First Name -->
-                    <div>
-                        <label asp-for="Student.FirstName" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                            First Name <span class="text-red-500">*</span>
-                        </label>
+                <!-- 1. First Name -->
+                <div>
+                    <label asp-for="Student.FirstName" class="block text-sm font-semibold text-slate-700 mb-1">
+                        First Name
+                    </label>
+                    <div class="relative">
                         <input type="text"
                                asp-for="Student.FirstName"
                                id="firstName"
                                placeholder="Enter first name"
-                               class="w-full pl-3.5 pr-3 py-2.5 bg-slate-50/50 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 transition-all duration-150" />
-                        <p id="firstNameWarning" class="hidden text-xs text-red-600 mt-1.5 flex items-center gap-1 font-medium animate-fade-in">
-                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Only letters and spaces are allowed. Numbers and symbols are not permitted.</span>
-                        </p>
+                               class="w-full pl-3.5 pr-3 py-2.5 bg-slate-50/70 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 transition-all duration-200" />
                     </div>
+                    <p id="firstNameWarning" class="hidden text-xs text-red-600 mt-1.5 font-medium flex items-center gap-1 animate-details-enter">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Only letters and spaces are allowed. Numbers and symbols are not permitted.</span>
+                    </p>
+                </div>
 
-                    <!-- Middle Initial -->
-                    <div>
-                        <label asp-for="Student.MiddleInitial" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                            Middle Initial
-                        </label>
+                <!-- 2. Middle Initial -->
+                <div>
+                    <label asp-for="Student.MiddleInitial" class="block text-sm font-semibold text-slate-700 mb-1">
+                        Middle Initial
+                    </label>
+                    <div class="relative">
                         <input type="text"
                                asp-for="Student.MiddleInitial"
                                id="middleInitial"
                                placeholder="Enter middle initial"
-                               class="w-full pl-3.5 pr-3 py-2.5 bg-slate-50/50 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 transition-all duration-150" />
-                        <p id="middleInitialWarning" class="hidden text-xs text-red-600 mt-1.5 flex items-center gap-1 font-medium animate-fade-in">
-                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Only letters and spaces are allowed. Numbers and symbols are not permitted.</span>
-                        </p>
+                               maxlength="5"
+                               class="w-full pl-3.5 pr-3 py-2.5 bg-slate-50/70 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 transition-all duration-200" />
                     </div>
+                    <p id="middleInitialWarning" class="hidden text-xs text-red-600 mt-1.5 font-medium flex items-center gap-1 animate-details-enter">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Only letters and spaces are allowed. Numbers and symbols are not permitted.</span>
+                    </p>
+                </div>
 
-                    <!-- Last Name -->
-                    <div>
-                        <label asp-for="Student.LastName" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                            Last Name <span class="text-red-500">*</span>
-                        </label>
+                <!-- 3. Last Name -->
+                <div>
+                    <label asp-for="Student.LastName" class="block text-sm font-semibold text-slate-700 mb-1">
+                        Last Name
+                    </label>
+                    <div class="relative">
                         <input type="text"
                                asp-for="Student.LastName"
                                id="lastName"
                                placeholder="Enter last name"
-                               class="w-full pl-3.5 pr-3 py-2.5 bg-slate-50/50 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 transition-all duration-150" />
-                        <p id="lastNameWarning" class="hidden text-xs text-red-600 mt-1.5 flex items-center gap-1 font-medium animate-fade-in">
-                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>Only letters and spaces are allowed. Numbers and symbols are not permitted.</span>
-                        </p>
+                               class="w-full pl-3.5 pr-3 py-2.5 bg-slate-50/70 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 transition-all duration-200" />
                     </div>
+                    <p id="lastNameWarning" class="hidden text-xs text-red-600 mt-1.5 font-medium flex items-center gap-1 animate-details-enter">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Only letters and spaces are allowed. Numbers and symbols are not permitted.</span>
+                    </p>
                 </div>
 
-                <!-- Complete Address -->
+                <!-- 4. Complete Address -->
                 <div>
-                    <label asp-for="Student.CompleteAddress" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                        Complete Address <span class="text-red-500">*</span>
+                    <label asp-for="Student.CompleteAddress" class="block text-sm font-semibold text-slate-700 mb-1">
+                        Complete Address
                     </label>
                     <textarea asp-for="Student.CompleteAddress"
                               id="completeAddress"
                               rows="3"
                               placeholder="Enter complete address"
-                              class="w-full p-3.5 bg-slate-50/50 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 transition-all duration-150 resize-none"></textarea>
+                              class="w-full p-3.5 bg-slate-50/70 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 transition-all duration-200 resize-y"></textarea>
                 </div>
 
-                <!-- Sex, Birthday, Program -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Sex -->
-                    <div>
-                        <label asp-for="Student.Sex" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                            Sex <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <select asp-for="Student.Sex"
-                                    id="sexSelect"
-                                    class="w-full px-3.5 py-2.5 bg-slate-50/50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 transition-all duration-150 appearance-none cursor-pointer">
-                                <option value="">-- Select Sex --</option>
-                                <option value="Feminine">Feminine</option>
-                                <option value="Masculine">Masculine</option>
-                                <option value="Prefer not to say">Prefer not to say</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Birthday -->
-                    <div>
-                        <label asp-for="Student.Birthday" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                            Birthday <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <input type="text"
-                                   asp-for="Student.Birthday"
-                                   id="birthdayInput"
-                                   placeholder="mm/dd/yyyy"
-                                   maxlength="10"
-                                   class="w-full px-3.5 py-2.5 bg-slate-50/50 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 transition-all duration-150" />
-                        </div>
-                        <p class="text-xs text-slate-500 mt-1.5 flex items-center gap-1 font-medium">
-                            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                <!-- 5. Sex -->
+                <div>
+                    <label asp-for="Student.Sex" class="block text-sm font-semibold text-slate-700 mb-1">
+                        Sex
+                    </label>
+                    <div class="relative">
+                        <select asp-for="Student.Sex"
+                                id="sexSelect"
+                                class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-300 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 transition-all duration-200 appearance-none cursor-pointer">
+                            <option value="">-- Select Sex --</option>
+                            <option value="Feminine">Feminine</option>
+                            <option value="Masculine">Masculine</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
-                            Format: mm/dd/yyyy
-                        </p>
-                    </div>
-
-                    <!-- Program -->
-                    <div>
-                        <label asp-for="Student.Program" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                            Program <span class="text-red-500">*</span>
-                        </label>
-                        <div class="relative">
-                            <select asp-for="Student.Program"
-                                    id="programSelect"
-                                    class="w-full px-3.5 py-2.5 bg-slate-50/50 border border-slate-300 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 transition-all duration-150 appearance-none cursor-pointer">
-                                <option value="">-- Select Program --</option>
-                                <option value="BEED">BEED - Bachelor of Elementary Education</option>
-                                <option value="BSA">BSA - Bachelor of Science in Accountancy</option>
-                                <option value="BSBA">BSBA - Bachelor of Science in Business Administration</option>
-                                <option value="BSENT">BSENT - Bachelor of Science in Entrepreneurship</option>
-                                <option value="BSIE">BSIE - Bachelor of Science in Industrial Engineering</option>
-                                <option value="BSIT">BSIT - Bachelor of Science in Information Technology</option>
-                                <option value="BSMA">BSMA - Bachelor of Science in Management Accounting</option>
-                                <option value="DIT">DIT - Diploma in Information Technology</option>
-                                <option value="DOMT-LOM">DOMT-LOM - Diploma in Office Management Tech.</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Buttons & Actions -->
-                <div class="flex flex-wrap items-center gap-3 pt-3">
+                <!-- 6. Birthday -->
+                <div>
+                    <label asp-for="Student.Birthday" class="block text-sm font-semibold text-slate-700 mb-1">
+                        Birthday
+                    </label>
+                    <div class="relative">
+                        <input type="text"
+                               asp-for="Student.Birthday"
+                               id="birthdayInput"
+                               placeholder="mm/dd/yyyy"
+                               maxlength="10"
+                               class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-300 rounded-lg text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 transition-all duration-200 font-mono" />
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5 font-medium">
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>Format: mm/dd/yyyy</span>
+                    </p>
+                </div>
+
+                <!-- 7. Program -->
+                <div>
+                    <label asp-for="Student.Program" class="block text-sm font-semibold text-slate-700 mb-1">
+                        Program
+                    </label>
+                    <div class="relative">
+                        <select asp-for="Student.Program"
+                                id="programSelect"
+                                class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-300 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/15 focus:border-blue-600 transition-all duration-200 appearance-none cursor-pointer">
+                            <option value="">-- Select Program --</option>
+                            <option value="BEED">BEED</option>
+                            <option value="BSA">BSA</option>
+                            <option value="BSBA">BSBA</option>
+                            <option value="BSENT">BSENT</option>
+                            <option value="BSIE">BSIE</option>
+                            <option value="BSIT">BSIT</option>
+                            <option value="BSMA">BSMA</option>
+                            <option value="DIT">DIT</option>
+                            <option value="DOMT-LOM">DOMT-LOM</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons: SUBMIT & Clear -->
+                <div class="flex items-center gap-3 pt-3">
                     <!-- SUBMIT Button -->
                     <button type="submit"
                             asp-page-handler="Submit"
-                            class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 cursor-pointer text-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-[0.98] text-white font-bold py-2.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-150 text-sm uppercase cursor-pointer">
+                        <svg class="w-4 h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                         </svg>
                         <span>SUBMIT</span>
                     </button>
@@ -253,29 +281,31 @@
                     <button type="submit"
                             asp-page-handler="Clear"
                             formnovalidate
-                            class="inline-flex items-center gap-2 bg-slate-500 hover:bg-slate-600 active:scale-[0.98] text-white font-bold py-2.5 px-5 rounded-lg shadow-sm hover:shadow transition-all duration-150 cursor-pointer text-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="inline-flex items-center gap-2 bg-slate-500 hover:bg-slate-600 active:scale-[0.98] text-white font-semibold py-2.5 px-5 rounded-lg shadow-sm hover:shadow transition-all duration-150 text-sm cursor-pointer">
+                        <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                         </svg>
                         <span>Clear</span>
                     </button>
                 </div>
+
             </form>
 
-            <!-- Displaying Submitted Data (Conditionally Rendered) -->
+            @* Registration details section displayed conditionally on the same page *@
             @if (Model.IsSubmitted)
             {
-                <div class="border-t border-slate-200 animate-fade-in">
-                    <!-- Details Banner -->
-                    <div class="bg-gradient-to-r from-emerald-700 via-emerald-800 to-teal-800 text-white font-bold text-center py-3.5 px-6 text-lg md:text-xl tracking-wider uppercase shadow-inner flex items-center justify-center gap-2">
-                        <svg class="w-6 h-6 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <div class="border-t border-slate-200 animate-details-enter" id="registrationDetailsSection">
+                    
+                    <!-- Green Header Banner -->
+                    <div class="bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 text-white font-bold py-3.5 px-6 md:px-8 text-lg md:text-xl tracking-wider uppercase shadow-inner flex items-center gap-2.5">
+                        <svg class="w-5 h-5 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         <span>REGISTRATION DETAILS</span>
                     </div>
 
-                    <!-- Details Content -->
-                    <div class="p-6 md:p-8 bg-slate-50/70 border-t border-emerald-600/20">
+                    <!-- Submitted Details Content List -->
+                    <div class="p-6 md:p-8 bg-slate-50/60">
                         <div class="bg-white rounded-xl p-5 shadow-sm border border-slate-200/90 divide-y divide-slate-100 space-y-2.5 text-sm md:text-base">
                             
                             <!-- First Name -->
@@ -317,28 +347,29 @@
                             <!-- Program -->
                             <div class="pt-2 flex flex-col sm:flex-row sm:items-baseline">
                                 <span class="font-bold text-slate-900 w-44 flex-shrink-0">Program:</span>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">
                                     @Model.Student.Program
                                 </span>
                             </div>
 
                         </div>
                     </div>
+
                 </div>
             }
 
-        </div>
-    </main>
+        </main>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 text-slate-500 text-xs md:text-sm font-medium">
-        &copy;BSIT 4 – 2026
-    </footer>
+        <!-- Footer: ©BSIT 4 – 2026 -->
+        <footer class="text-center mt-6 text-slate-600 text-sm font-medium">
+            Footer: &copy;BSIT 4 – 2026
+        </footer>
 
-    <!-- Client-side Polish Script -->
+    </div>
+
+    <!-- Client-side Polish Scripts: Formatting & Validations -->
     <script>
         // Automatic birthday input formatting helper (mm/dd/yyyy)
-        // Automatically places slash after month (mm) and day (dd)
         const bdayInput = document.getElementById('birthdayInput');
         if (bdayInput) {
             bdayInput.addEventListener('keydown', function(e) {
@@ -346,7 +377,6 @@
                     const val = this.value;
                     const start = this.selectionStart;
                     const end = this.selectionEnd;
-                    // If Backspace is pressed right after a '/', delete both the slash and the preceding digit
                     if (start === end && start > 0 && val[start - 1] === '/') {
                         e.preventDefault();
                         this.value = val.slice(0, start - 2) + val.slice(end);
@@ -356,81 +386,59 @@
             });
 
             bdayInput.addEventListener('input', function(e) {
-                // Strip all non-digit characters
                 let v = this.value.replace(/\D/g, '');
-                if (v.length > 8) {
-                    v = v.slice(0, 8);
-                }
+                if (v.length > 8) v = v.slice(0, 8);
 
                 if (v.length === 0) {
                     this.value = '';
                     return;
                 }
 
-                // If deleting, do not auto-append trailing slash
                 if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward') {
-                    if (v.length <= 2) {
-                        this.value = v;
-                    } else if (v.length <= 4) {
-                        this.value = v.slice(0, 2) + '/' + v.slice(2);
-                    } else {
-                        this.value = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4);
-                    }
+                    if (v.length <= 2) this.value = v;
+                    else if (v.length <= 4) this.value = v.slice(0, 2) + '/' + v.slice(2);
+                    else this.value = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4);
                     return;
                 }
 
-                // When typing forward:
-                if (v.length === 1) {
-                    this.value = v;
-                } else if (v.length === 2) {
-                    // When 2 digits of month are typed, automatically place slash
-                    this.value = v + '/';
-                } else if (v.length === 3) {
-                    this.value = v.slice(0, 2) + '/' + v.slice(2);
-                } else if (v.length === 4) {
-                    // When 2 digits of day are typed, automatically place slash
-                    this.value = v.slice(0, 2) + '/' + v.slice(2, 4) + '/';
-                } else {
-                    this.value = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4);
-                }
+                if (v.length === 1) this.value = v;
+                else if (v.length === 2) this.value = v + '/';
+                else if (v.length === 3) this.value = v.slice(0, 2) + '/' + v.slice(2);
+                else if (v.length === 4) this.value = v.slice(0, 2) + '/' + v.slice(2, 4) + '/';
+                else this.value = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4);
             });
         }
 
-        // Setup validation for name inputs: only letters, spaces, and periods allowed.
-        // If numbers or symbols are entered, block them and display a warning.
+        // Setup validation for name inputs: restrict to letters and spaces
         function setupNameValidation(inputId, warningId) {
             const input = document.getElementById(inputId);
             const warning = document.getElementById(warningId);
             if (!input || !warning) return;
 
-            let warningTimeout = null;
-
+            let timeout = null;
             function showWarning() {
                 warning.classList.remove('hidden');
-                input.classList.add('border-red-400', 'focus:ring-red-500/30', 'focus:border-red-500');
-                input.classList.remove('border-slate-300', 'focus:ring-blue-500/30', 'focus:border-blue-600');
+                input.classList.add('border-red-400', 'focus:ring-red-500/20', 'focus:border-red-500');
+                input.classList.remove('border-slate-300', 'focus:ring-blue-500/15', 'focus:border-blue-600');
 
-                if (warningTimeout) clearTimeout(warningTimeout);
-                warningTimeout = setTimeout(() => {
+                if (timeout) clearTimeout(timeout);
+                timeout = setTimeout(() => {
                     warning.classList.add('hidden');
-                    input.classList.remove('border-red-400', 'focus:ring-red-500/30', 'focus:border-red-500');
-                    input.classList.add('border-slate-300', 'focus:ring-blue-500/30', 'focus:border-blue-600');
+                    input.classList.remove('border-red-400', 'focus:ring-red-500/20', 'focus:border-red-500');
+                    input.classList.add('border-slate-300', 'focus:ring-blue-500/15', 'focus:border-blue-600');
                 }, 3000);
             }
 
             function hideWarning() {
                 warning.classList.add('hidden');
-                input.classList.remove('border-red-400', 'focus:ring-red-500/30', 'focus:border-red-500');
-                input.classList.add('border-slate-300', 'focus:ring-blue-500/30', 'focus:border-blue-600');
+                input.classList.remove('border-red-400', 'focus:ring-red-500/20', 'focus:border-red-500');
+                input.classList.add('border-slate-300', 'focus:ring-blue-500/15', 'focus:border-blue-600');
             }
 
-            // Intercept keyboard typing: block numbers and symbols immediately
             input.addEventListener('keypress', function(e) {
                 if (e.ctrlKey || e.altKey || e.metaKey || e.key.length !== 1) return;
-
-                // Valid: English and accented letters (e.g. ñ, Ñ), spaces, and periods (for initials)
-                const validCharRegex = /^[a-zA-Z\s\u00C0-\u017F.]$/;
-                if (!validCharRegex.test(e.key)) {
+                const validRegex = /^[a-zA-Z\s\u00C0-\u017F.]$/;
+                if (!validRegex.test(e.key)) {
                     e.preventDefault();
                     showWarning();
                 } else {
@@ -438,11 +446,10 @@
                 }
             });
 
-            // Handle paste / input event to filter out numbers or symbols
             input.addEventListener('input', function() {
-                const invalidCharRegex = /[^a-zA-Z\s\u00C0-\u017F.]/g;
-                if (invalidCharRegex.test(this.value)) {
-                    this.value = this.value.replace(invalidCharRegex, '');
+                const invalidRegex = /[^a-zA-Z\s\u00C0-\u017F.]/g;
+                if (invalidRegex.test(this.value)) {
+                    this.value = this.value.replace(invalidRegex, '');
                     showWarning();
                 }
             });
