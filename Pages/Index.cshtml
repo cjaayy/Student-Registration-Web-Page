@@ -1,7 +1,7 @@
 @page
 @model IndexModel
 @{
-    // Layout is null because this is a standalone single page
+    // no shared layout needed, just one standalone page for activity 1
     Layout = null;
     ViewData["Title"] = "Student Registration - PUP Bataan";
 }
@@ -13,15 +13,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     
-    <!-- Google Fonts for clean typography -->
+    <!-- fonts from google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <!-- Tailwind CSS CDN for styling -->
+    <!-- tailwind cdn so we don't have to write raw css manually -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Setup tailwind with PUP school colors: maroon and gold
+        // custom tailwind colors for pup (maroon and gold)
         tailwind.config = {
             theme: {
                 extend: {
@@ -46,13 +46,13 @@
         }
     </script>
     
-    <!-- Custom animations for smooth card entrance -->
+    <!-- simple animation styles -->
     <style>
         body {
             font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
         }
 
-        /* smooth slide up and fade in effect when loading or submitting */
+        /* subtle fade in so it doesn't pop in abruptly */
         @@keyframes slideUpFade {
             from {
                 opacity: 0;
@@ -75,26 +75,26 @@
 </head>
 <body class="bg-gradient-to-br from-amber-50/30 via-slate-100 to-amber-100/20 min-h-screen py-10 px-4 text-slate-800 antialiased flex flex-col justify-between items-center selection:bg-pup-maroon selection:text-pup-gold relative">
 
-    <!-- Subtle ambient background glow matching maroon and gold -->
+    <!-- some ambient glow in the background just to look nice -->
     <div class="fixed top-0 left-1/4 w-96 h-96 bg-pup-maroon/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
     <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-pup-gold/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
-    <!-- Top accent bar matching maroon and gold theme -->
+    <!-- top colored accent line matching pup colors -->
     <div class="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pup-maroon via-pup-gold to-pup-maroon z-50"></div>
 
-    <!-- Main page container -->
+    <!-- main page wrapper container -->
     <div class="w-full max-w-2xl mx-auto animate-card-enter">
 
-        <!-- Header: PUP BATAAN with official logo -->
+        <!-- header section with pup logo and campus name -->
         <header class="text-center mb-6">
-            <!-- School Logo (clean floating style without border) -->
+            <!-- school logo -->
             <div class="inline-flex items-center justify-center mb-2.5">
                 <img src="https://www.pngkey.com/png/detail/52-528919_the-pup-logo-polytechnic-university-of-the-philippines.png" 
                      alt="The Pup Logo - Polytechnic University Of The Philippines Logo@pngkey.com" 
                      class="h-16 md:h-20 w-auto object-contain drop-shadow-sm transition-transform duration-300 hover:scale-105" />
             </div>
 
-            <!-- School name header matching logo maroon with gold subtext -->
+            <!-- campus and university title -->
             <h1 class="text-3xl md:text-4xl font-black text-pup-maroon tracking-wider uppercase drop-shadow-sm">
                 PUP BATAAN
             </h1>
@@ -107,10 +107,10 @@
             </div>
         </header>
 
-        <!-- Main Form Card Container styled to match PUP logo colors -->
+        <!-- main card container -->
         <main class="w-full bg-white rounded-2xl shadow-card-glow border border-amber-200/80 overflow-hidden transition-all duration-300 hover:shadow-2xl">
             
-            <!-- Logo Maroon banner at top of card with Gold text and icon -->
+            <!-- card header banner (changes title between student registration and details) -->
             <div class="bg-gradient-to-r from-pup-maroon via-pup-maroonlight to-pup-maroon text-pup-gold font-extrabold text-center py-4 px-6 text-xl md:text-2xl tracking-wider uppercase shadow-md flex items-center justify-center gap-2.5 border-b-2 border-pup-gold/40">
                 <svg class="w-6 h-6 text-pup-gold drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -118,13 +118,13 @@
                 <span class="drop-shadow-sm tracking-wide">@(Model.IsSubmitted ? "REGISTRATION DETAILS" : "STUDENT REGISTRATION")</span>
             </div>
 
-            @* When not submitted: Show the registration input form *@
+            @* show the input form if it's not yet submitted *@
             @if (!Model.IsSubmitted)
             {
-                <!-- Registration Form starts here -->
+                <!-- registration form starts here -->
                 <form method="post" asp-page-handler="Submit" class="p-6 md:p-8 space-y-5" id="registrationForm">
                     
-                    <!-- Subtext instruction for the user in gold theme -->
+                    <!-- short reminder note for the user -->
                     <div class="flex items-center gap-2.5 p-3 rounded-xl bg-amber-50/70 border border-amber-200/80 text-amber-950">
                         <svg class="w-5 h-5 text-pup-golddark flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
@@ -134,7 +134,7 @@
                         </p>
                     </div>
 
-                    <!-- 1. First Name Field -->
+                    <!-- 1. First Name -->
                     <div class="space-y-1.5">
                         <label asp-for="Student.FirstName" class="flex items-center gap-2 text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-700">
                             <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,7 +149,7 @@
                                    placeholder="Enter first name"
                                    class="w-full px-4 py-2.5 bg-slate-50/70 hover:bg-slate-50 focus:bg-white border border-slate-300 hover:border-amber-400/80 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-pup-gold/25 focus:border-pup-maroon shadow-sm focus:shadow-md transition-all duration-200" />
                         </div>
-                        <!-- Warning message if user types numbers in the name -->
+                        <!-- quick error alert if they type numbers or symbols -->
                         <p id="firstNameWarning" class="hidden text-xs text-red-600 font-medium flex items-center gap-1 animate-details-enter">
                             <svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
@@ -158,7 +158,7 @@
                         </p>
                     </div>
 
-                    <!-- 2. Middle Initial Field -->
+                    <!-- 2. Middle Initial -->
                     <div class="space-y-1.5">
                         <label asp-for="Student.MiddleInitial" class="flex items-center gap-2 text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-700">
                             <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,7 +167,7 @@
                             <span>Middle Initial</span>
                         </label>
                         <div class="relative rounded-xl shadow-sm transition-all duration-200">
-                            <!-- Note: placeholder:normal-case keeps the placeholder text in normal case while typed text is uppercase -->
+                            <!-- normal-case so placeholder isn't capitalized, but user text auto-uppercases -->
                             <input type="text"
                                    asp-for="Student.MiddleInitial"
                                    id="middleInitial"
@@ -183,7 +183,7 @@
                         </p>
                     </div>
 
-                    <!-- 3. Last Name Field -->
+                    <!-- 3. Last Name -->
                     <div class="space-y-1.5">
                         <label asp-for="Student.LastName" class="flex items-center gap-2 text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-700">
                             <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,7 +206,7 @@
                         </p>
                     </div>
 
-                    <!-- 4. Complete Address Field -->
+                    <!-- 4. Complete Address -->
                     <div class="space-y-1.5">
                         <label asp-for="Student.CompleteAddress" class="flex items-center gap-2 text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-700">
                             <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,7 +224,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. Sex Dropdown Field -->
+                    <!-- 5. Sex dropdown -->
                     <div class="space-y-1.5">
                         <label asp-for="Student.Sex" class="flex items-center gap-2 text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-700">
                             <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -249,7 +249,7 @@
                         </div>
                     </div>
 
-                    <!-- 6. Birthday Field -->
+                    <!-- 6. Birthday (auto-formats with slashes) -->
                     <div class="space-y-1.5">
                         <div class="flex items-center justify-between">
                             <label asp-for="Student.Birthday" class="flex items-center gap-2 text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-700">
@@ -275,7 +275,7 @@
                         </div>
                     </div>
 
-                    <!-- 7. Program Dropdown Field -->
+                    <!-- 7. Program dropdown -->
                     <div class="space-y-1.5">
                         <label asp-for="Student.Program" class="flex items-center gap-2 text-xs md:text-sm font-extrabold uppercase tracking-wider text-slate-700">
                             <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -307,9 +307,9 @@
                         </div>
                     </div>
 
-                    <!-- Form Action Buttons: The buttons are styled in Gold -->
+                    <!-- form action buttons -->
                     <div class="flex items-center gap-3 pt-3">
-                        <!-- SUBMIT Button in vibrant Gold with bold Maroon text matching logo -->
+                        <!-- submit button -->
                         <button type="submit"
                                 asp-page-handler="Submit"
                                 class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-pup-gold to-yellow-500 hover:from-amber-500 hover:to-yellow-600 active:scale-[0.98] text-pup-maroon font-black py-2.5 px-7 rounded-xl shadow-md hover:shadow-lg shadow-amber-500/25 transition-all duration-150 text-sm uppercase cursor-pointer border border-amber-300">
@@ -319,7 +319,7 @@
                             <span>SUBMIT</span>
                         </button>
 
-                        <!-- Clear Button in soft gold theme -->
+                        <!-- clear button to reset the form -->
                         <button type="submit"
                                 asp-page-handler="Clear"
                                 formnovalidate
@@ -335,13 +335,13 @@
             }
             else
             {
-                <!-- When submitted: Inputs are hidden, and REGISTRATION DETAILS is shown! -->
+                <!-- once submitted: form inputs hide and submitted info is displayed here -->
                 <div class="animate-details-enter p-6 md:p-8 bg-amber-50/20 space-y-6" id="registrationDetailsSection">
                     
-                    <!-- Submitted student data list with icons for every single label -->
+                    <!-- list showing all 7 submitted fields with their icons and values -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-200/80 divide-y divide-amber-100 space-y-3.5 text-sm md:text-base">
                         
-                        <!-- First Name -->
+                        <!-- first name -->
                         <div class="pt-3 first:pt-0 flex flex-col sm:flex-row sm:items-center">
                             <span class="font-bold text-slate-900 w-48 flex-shrink-0 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -352,7 +352,7 @@
                             <span class="text-slate-800 font-semibold mt-1 sm:mt-0">@Model.Student.FirstName</span>
                         </div>
 
-                        <!-- Middle Initial -->
+                        <!-- middle initial -->
                         <div class="pt-3 flex flex-col sm:flex-row sm:items-center">
                             <span class="font-bold text-slate-900 w-48 flex-shrink-0 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -363,7 +363,7 @@
                             <span class="text-slate-800 font-semibold mt-1 sm:mt-0">@Model.Student.MiddleInitial</span>
                         </div>
 
-                        <!-- Last Name -->
+                        <!-- last name -->
                         <div class="pt-3 flex flex-col sm:flex-row sm:items-center">
                             <span class="font-bold text-slate-900 w-48 flex-shrink-0 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -374,7 +374,7 @@
                             <span class="text-slate-800 font-semibold mt-1 sm:mt-0">@Model.Student.LastName</span>
                         </div>
 
-                        <!-- Complete Address -->
+                        <!-- complete address -->
                         <div class="pt-3 flex flex-col sm:flex-row sm:items-center">
                             <span class="font-bold text-slate-900 w-48 flex-shrink-0 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -386,7 +386,7 @@
                             <span class="text-slate-800 font-semibold mt-1 sm:mt-0">@Model.Student.CompleteAddress</span>
                         </div>
 
-                        <!-- Sex -->
+                        <!-- sex -->
                         <div class="pt-3 flex flex-col sm:flex-row sm:items-center">
                             <span class="font-bold text-slate-900 w-48 flex-shrink-0 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -397,7 +397,7 @@
                             <span class="text-slate-800 font-semibold mt-1 sm:mt-0">@Model.Student.Sex</span>
                         </div>
 
-                        <!-- Birthday -->
+                        <!-- birthday -->
                         <div class="pt-3 flex flex-col sm:flex-row sm:items-center">
                             <span class="font-bold text-slate-900 w-48 flex-shrink-0 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -408,7 +408,7 @@
                             <span class="text-slate-800 font-semibold mt-1 sm:mt-0">@Model.Student.Birthday</span>
                         </div>
 
-                        <!-- Program -->
+                        <!-- program -->
                         <div class="pt-3 flex flex-col sm:flex-row sm:items-center">
                             <span class="font-bold text-slate-900 w-48 flex-shrink-0 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-pup-maroon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -424,7 +424,7 @@
 
                     </div>
 
-                    <!-- Clear Button to reset and bring the input form back -->
+                    <!-- clear button to reset everything and bring the input form back -->
                     <form method="post" asp-page-handler="Clear" class="pt-2 flex justify-start">
                         <button type="submit"
                                 class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-pup-gold to-yellow-500 hover:from-amber-500 hover:to-yellow-600 active:scale-[0.98] text-pup-maroon font-black py-2.5 px-7 rounded-xl shadow-md hover:shadow-lg shadow-amber-500/25 transition-all duration-150 text-sm uppercase cursor-pointer border border-amber-300">
@@ -440,17 +440,16 @@
 
         </main>
 
-        <!-- Footer required by the activity -->
+        <!-- required footer info -->
         <footer class="text-center mt-6 text-slate-500 text-xs md:text-sm font-semibold tracking-wide">
             &copy; BSIT 4 – 2026
         </footer>
 
     </div>
 
-    <!-- JavaScript helper functions for birthday format and letter-only restriction -->
+    <!-- simple client-side javascript helpers -->
     <script>
-        // Automatic birthday input formatting helper (mm/dd/yyyy)
-        // Automatically adds slashes as the user types digits
+        // automatically adds slashes as the user types the birthday digits (mm/dd/yyyy)
         const bdayInput = document.getElementById('birthdayInput');
         if (bdayInput) {
             bdayInput.addEventListener('keydown', function(e) {
@@ -477,7 +476,7 @@
                     return;
                 }
 
-                // If deleting, do not auto-append trailing slashes
+                // don't auto-append slashes if user is pressing backspace or deleting
                 if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward') {
                     if (v.length <= 2) {
                         this.value = v;
@@ -503,7 +502,7 @@
             });
         }
 
-        // Setup validation helper for name inputs (letters and spaces only)
+        // blocks numbers and symbols on name fields, only allows letters, spaces, and periods
         function setupNameValidation(inputId, warningId) {
             const input = document.getElementById(inputId);
             const warning = document.getElementById(warningId);

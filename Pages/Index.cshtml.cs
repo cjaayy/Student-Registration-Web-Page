@@ -4,48 +4,48 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Pages
 {
-    // Activity 01: Student Registration Web Page
+    // Activity 01: Student Registration Web Page - BSIT
     public class IndexModel : PageModel
     {
-        // This object binds to our form textboxes and dropdowns
+        // binds to our form fields automatically on post
         [BindProperty]
         public StudentInfo Student { get; set; } = new();
 
-        // This boolean flag controls whether we show the registration details below
+        // tracks whether form is submitted (toggles between input form and details view)
         public bool IsSubmitted { get; set; } = false;
 
-        // Runs when someone opens or refreshes the page
+        // runs on initial page load
         public void OnGet()
         {
-            // Keep the details card hidden initially
+            // keep details hidden at first
             IsSubmitted = false;
         }
 
-        // Runs when the user clicks the SUBMIT button
+        // runs when clicking submit
         public IActionResult OnPostSubmit()
         {
-            // Set this to true so the registration details card shows up on the same page
+            // switch to true so details view is shown and form inputs are hidden
             IsSubmitted = true;
             return Page();
         }
 
-        // Runs when the user clicks the Clear button
+        // runs when clicking clear
         public IActionResult OnPostClear()
         {
-            // Create a fresh empty student object
+            // reset student data back to blank
             Student = new StudentInfo();
 
-            // Clear ModelState so all inputs in the browser reset back to empty
+            // clear modelstate so the textboxes in the browser actually wipe clean
             ModelState.Clear();
 
-            // Hide the details section again
+            // switch back to false so the input form comes back
             IsSubmitted = false;
 
             return Page();
         }
     }
 
-    // Student model with the 7 required fields from the activity
+    // student model holding the 7 required fields for activity 1
     public class StudentInfo
     {
         [Display(Name = "First Name")]
