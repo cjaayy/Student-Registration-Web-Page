@@ -4,61 +4,48 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Pages
 {
-    /// <summary>
-    /// PageModel for Activity 01: Student Registration Web Page.
-    /// Manages the student model state, form submissions, and reset functionality.
-    /// </summary>
+    // Activity 01: Student Registration Web Page
     public class IndexModel : PageModel
     {
-        // Property bound to the form inputs for data entry
+        // This object binds to our form textboxes and dropdowns
         [BindProperty]
         public StudentInfo Student { get; set; } = new();
 
-        // Flag to indicate whether the form has been submitted and display results
+        // This boolean flag controls whether we show the registration details below
         public bool IsSubmitted { get; set; } = false;
 
-        /// <summary>
-        /// Handles HTTP GET requests when the page is initially loaded.
-        /// </summary>
+        // Runs when someone opens or refreshes the page
         public void OnGet()
         {
-            // Initial state: details section is hidden
+            // Keep the details card hidden initially
             IsSubmitted = false;
         }
 
-        /// <summary>
-        /// Handles the form submission (SUBMIT button).
-        /// Sets IsSubmitted to true to display the submitted information on the same page.
-        /// </summary>
+        // Runs when the user clicks the SUBMIT button
         public IActionResult OnPostSubmit()
         {
-            // Set flag to true to display the "REGISTRATION DETAILS" card
+            // Set this to true so the registration details card shows up on the same page
             IsSubmitted = true;
             return Page();
         }
 
-        /// <summary>
-        /// Handles the reset action (Clear button).
-        /// Clears all form entries and hides the submitted information section.
-        /// </summary>
+        // Runs when the user clicks the Clear button
         public IActionResult OnPostClear()
         {
-            // Re-instantiate the model to clear all fields
+            // Create a fresh empty student object
             Student = new StudentInfo();
 
-            // Clear ModelState to ensure all form inputs re-render completely empty
+            // Clear ModelState so all inputs in the browser reset back to empty
             ModelState.Clear();
 
-            // Hide the submitted details section
+            // Hide the details section again
             IsSubmitted = false;
 
             return Page();
         }
     }
 
-    /// <summary>
-    /// Model class representing the student enrollee information required by Activity 01.
-    /// </summary>
+    // Student model with the 7 required fields from the activity
     public class StudentInfo
     {
         [Display(Name = "First Name")]
