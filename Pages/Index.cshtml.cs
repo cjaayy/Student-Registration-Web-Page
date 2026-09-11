@@ -1,72 +1,48 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Pages
 {
     // Activity 01: Student Registration Web Page - BSIT
     public class IndexModel : PageModel
     {
-        // binds to our form fields automatically on post
+        // student object to hold the form inputs
         [BindProperty]
-        public StudentInfo Student { get; set; } = new();
+        public StudentInfo Student { get; set; } = new StudentInfo();
 
-        // tracks whether form is submitted (toggles between input form and details view)
+        // boolean flag to check if the form was submitted
         public bool IsSubmitted { get; set; } = false;
 
-        // runs on initial page load
+        // runs when the page first loads
         public void OnGet()
         {
-            // keep details hidden at first
             IsSubmitted = false;
         }
 
-        // runs when clicking submit
-        public IActionResult OnPostSubmit()
+        // runs when user clicks the submit button
+        public void OnPostSubmit()
         {
-            // switch to true so details view is shown and form inputs are hidden
             IsSubmitted = true;
-            return Page();
         }
 
-        // runs when clicking clear
-        public IActionResult OnPostClear()
+        // runs when user clicks the clear button
+        public void OnPostClear()
         {
-            // reset student data back to blank
             Student = new StudentInfo();
-
-            // clear modelstate so the textboxes in the browser actually wipe clean
             ModelState.Clear();
-
-            // switch back to false so the input form comes back
             IsSubmitted = false;
-
-            return Page();
         }
     }
 
-    // student model holding the 7 required fields for activity 1
+    // student class holding the 7 required fields from the activity
     public class StudentInfo
     {
-        [Display(Name = "First Name")]
-        public string? FirstName { get; set; }
-
-        [Display(Name = "Middle Initial")]
-        public string? MiddleInitial { get; set; }
-
-        [Display(Name = "Last Name")]
-        public string? LastName { get; set; }
-
-        [Display(Name = "Complete Address")]
-        public string? CompleteAddress { get; set; }
-
-        [Display(Name = "Sex")]
-        public string? Sex { get; set; }
-
-        [Display(Name = "Birthday")]
-        public string? Birthday { get; set; }
-
-        [Display(Name = "Program")]
-        public string? Program { get; set; }
+        public string FirstName { get; set; } = "";
+        public string MiddleInitial { get; set; } = "";
+        public string LastName { get; set; } = "";
+        public string CompleteAddress { get; set; } = "";
+        public string Sex { get; set; } = "";
+        public string Birthday { get; set; } = "";
+        public string Program { get; set; } = "";
     }
 }

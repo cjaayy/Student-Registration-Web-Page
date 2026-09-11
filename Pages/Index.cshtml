@@ -237,15 +237,16 @@
                         <div class="relative rounded-xl shadow-sm transition-all duration-200">
                             <select asp-for="Student.Sex"
                                     id="sexSelect"
-                                    class="w-full pl-4 pr-10 py-2.5 bg-slate-50/70 hover:bg-slate-50 focus:bg-white border border-slate-300 hover:border-amber-400/80 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-4 focus:ring-pup-gold/25 focus:border-pup-maroon shadow-sm focus:shadow-md transition-all duration-200 appearance-none cursor-pointer">
+                                    class="w-full pl-4 pr-10 py-2.5 bg-slate-50/70 hover:bg-slate-50 focus:bg-white border border-slate-300 hover:border-pup-maroon/70 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-4 focus:ring-pup-gold/25 focus:border-pup-maroon shadow-sm focus:shadow-md transition-all duration-200 appearance-none cursor-pointer">
                                 <option value="">-- Select Sex --</option>
                                 <option value="Feminine">Feminine</option>
                                 <option value="Masculine">Masculine</option>
                                 <option value="Prefer not to say">Prefer not to say</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-400">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            <!-- maroon dropdown selector arrow icon -->
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-pup-maroon">
+                                <svg class="w-4 h-4 text-pup-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </div>
                         </div>
@@ -289,7 +290,7 @@
                         <div class="relative rounded-xl shadow-sm transition-all duration-200">
                             <select asp-for="Student.Program"
                                     id="programSelect"
-                                    class="w-full pl-4 pr-10 py-2.5 bg-slate-50/70 hover:bg-slate-50 focus:bg-white border border-slate-300 hover:border-amber-400/80 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-4 focus:ring-pup-gold/25 focus:border-pup-maroon shadow-sm focus:shadow-md transition-all duration-200 appearance-none cursor-pointer">
+                                    class="w-full pl-4 pr-10 py-2.5 bg-slate-50/70 hover:bg-slate-50 focus:bg-white border border-slate-300 hover:border-pup-maroon/70 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-4 focus:ring-pup-gold/25 focus:border-pup-maroon shadow-sm focus:shadow-md transition-all duration-200 appearance-none cursor-pointer">
                                 <option value="">-- Select Program --</option>
                                 <option value="BEED">BEED</option>
                                 <option value="BSA">BSA</option>
@@ -301,9 +302,10 @@
                                 <option value="DIT">DIT</option>
                                 <option value="DOMT-LOM">DOMT-LOM</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-400">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            <!-- maroon dropdown selector arrow icon -->
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-pup-maroon">
+                                <svg class="w-4 h-4 text-pup-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                                 </svg>
                             </div>
                         </div>
